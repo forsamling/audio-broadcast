@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/container"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  tools:context="com.royalone.audiobroadcast.MainActivity">
+
+  <FrameLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1">
+
+    <FrameLayout
+      android:id="@+id/layout_devices"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+      <com.royalone.audiobroadcast.view.CustomTextView
+        android:id="@+id/txt_devices_not_found"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+
+        android:text="@string/not_devices_found"
+        android:textColor="@color/colorAccent"
+        android:textSize="25dp" />
+
+
+      <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <ListView
+          android:id="@+id/list_remote_devices"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+
+        </ListView>
+
+      </android.support.v4.widget.SwipeRefreshLayout>
+
+
+    </FrameLayout>
+
+
+    <FrameLayout
+      android:id="@+id/content"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"></FrameLayout>
+  </FrameLayout>
+
+  <android.support.design.widget.BottomNavigationView
+    android:id="@+id/navigation"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:background="?android:attr/windowBackground"
+    app:menu="@menu/navigation" />
+
+</LinearLayout>

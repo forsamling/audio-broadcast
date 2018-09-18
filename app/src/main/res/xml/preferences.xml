@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <PreferenceCategory
+    android:enabled="true"
+    android:title="@string/title_settings">
+
+    <Preference
+      android:key="@string/pref_name_device"
+      android:summary="@string/name_device_summary"
+      android:textColor="#FFFFFF"
+      android:title="@string/name_device" />
+
+    <ListPreference
+      android:defaultValue="false"
+      android:entries="@array/app_mode"
+      android:entryValues="@array/app_mode"
+      android:key="@string/pref_app_mode"
+      android:summary="@string/pref_app_mode_summary"
+      android:title="@string/pref_app_mode" />
+
+  </PreferenceCategory>
+
+
+</PreferenceScreen>
