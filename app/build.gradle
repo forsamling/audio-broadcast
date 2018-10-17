@@ -21,15 +21,12 @@ android {
 }
 
 dependencies {
-  implementation 'com.android.support:appcompat-v7:27.+'
-  implementation 'com.android.support:design:27.+'
-  implementation 'org.teleal.cling:cling-core:1.0.5+'
-  implementation 'org.teleal.cling:cling-support:1.0.5+'
-  annotationProcessor files('libs/butterknife-7.0.1.jar')
-  implementation files('libs/butterknife-7.0.1.jar')
-  implementation files('libs/acra-4.6.1.jar')
-  implementation files('libs/android-async-http-1.4.9.jar')
-  implementation files('libs/netty-3.5.5.final.jar')
-  implementation files('libs/picasso-2.5.2.jar')
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+
+  compile 'com.android.support:appcompat-v7:27.+'
+  compile 'com.android.support:design:27.+'
+
+  compile 'org.teleal.cling:cling-core:1.0.5+'
+  compile 'org.teleal.cling:cling-support:1.0.5+'
 
 }

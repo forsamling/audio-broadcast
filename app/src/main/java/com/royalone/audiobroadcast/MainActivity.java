@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements ServerDevicesAdap
 
   @Bind(R.id.swipeRefreshLayout)
   SwipeRefreshLayout swipeRefreshLayout;
+  protected EventsListener eventListener;
 
   private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
     = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -135,9 +136,7 @@ public class MainActivity extends AppCompatActivity implements ServerDevicesAdap
     public void onServiceConnected(ComponentName className, IBinder service) {
       Logger.print("UpnpService Connected");
       Global.audioService = ((UPnPAudioService.LocalBinder) service).getService();
-      Global.audioService.setEventsHandler(new EventsListener());
-//      Global.audioService.acquireWakeLock();
-
+      Global.audioService.setEventsHandler(eventListener);
       setAppMode();
     }
 
@@ -188,7 +187,7 @@ public class MainActivity extends AppCompatActivity implements ServerDevicesAdap
     setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
     serverDevicesAdapter = new ServerDevicesAdapter(this, new ArrayList<ClingDevice>());
-
+    eventListener = new EventsListener();
 
     ArrayList<String> devices = new ArrayList<>();
     clientDevicesAdapter = new ClientDevicesAdapter(this, devices);
@@ -231,6 +230,7 @@ public class MainActivity extends AppCompatActivity implements ServerDevicesAdap
     checkPermissins();
 
     getValidSampleRates();
+
 //    disableAlarms();
   }
 
@@ -311,10 +311,10 @@ public class MainActivity extends AppCompatActivity implements ServerDevicesAdap
         public void run() {
           Logger.print(Global.CONNECTED_TO_SERVERNAME);
           MainActivity.this.serverDevicesAdapter.notifyDataSetChanged();
-
-          Global.audioService.updateNotificationsWithListenersCount();
         }
       });
+
+      Global.audioService.updateNotificationsWithListenersCount();
     }
 
     @Override
@@ -326,11 +326,10 @@ public class MainActivity extends AppCompatActivity implements ServerDevicesAdap
 
           if (serverDevicesAdapter.getCount() == 0)
             txtDevicesNotFound.setVisibility(View.GONE);
-
-
-          Global.audioService.updateNotificationsWithListenersCount();
         }
       });
+
+      Global.audioService.updateNotificationsWithListenersCount();
     }
 
     @Override
@@ -429,10 +428,16 @@ public class MainActivity extends AppCompatActivity implements ServerDevicesAdap
 
     @Override
     public void onServerDisConnected(final String userName) {
+        Logger.print("onServerDisConnected = " + userName);
         runOnUiThread(new Runnable() {
-
           @Override
           public void run() {
+            Logger.print("server is removing username= " + userName);
+            for(int i=0; i< MainActivity.this.clientDevicesAdapter.getCount(); i++) {
+              String deviceName = MainActivity.this.clientDevicesAdapter.getItem(i);
+              Logger.print("connected devices name:" + deviceName);
+            }
+
             MainActivity.this.clientDevicesAdapter.remove(userName);
             MainActivity.this.clientDevicesAdapter.notifyDataSetChanged();
             if ( MainActivity.this.clientDevicesAdapter.getCount() == 0)
@@ -466,7 +471,6 @@ public class MainActivity extends AppCompatActivity implements ServerDevicesAdap
       if (Global.isListening) {
         if(Global.audioService.client != null)
           Global.audioService.client.disconnect();
-        return;
       }
 
       Global.audioService.seekServers();

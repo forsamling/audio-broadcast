@@ -74,7 +74,6 @@ public class Server {
         }
     }
 
-
     public void stop() {
         ChannelGroup allChannels = new DefaultChannelGroup("audiobroadcast-server");
         Iterator<ClientDetails> it = Global.connectedClients.iterator();

@@ -1,6 +1,8 @@
 package com.royalone.audiobroadcast.services;
 
+import com.royalone.audiobroadcast.BaseApplication;
 import com.royalone.audiobroadcast.Global;
+import com.royalone.audiobroadcast.utils.AppSettings;
 import com.royalone.audiobroadcast.utils.Logger;
 import com.royalone.audiobroadcast.utils.Notice;
 
@@ -52,6 +54,9 @@ public class ClingService {
     sb.append(" listening to broadcast)");
 
     try {
+      Global.connectedUsers.add(username);
+      Global.audioService.updateNotificationsWithListenersCount();
+
       Global.audioService.eventsListener.onServerConnected(username);
     }catch (Exception e) {
       e.printStackTrace();
@@ -74,6 +79,9 @@ public class ClingService {
     sb.append(" user");
 
     try {
+
+      Global.connectedUsers.remove(username);
+      Global.audioService.updateNotificationsWithListenersCount();
       Global.audioService.eventsListener.onServerDisConnected(username);
     }catch (Exception e) {
       e.printStackTrace();
