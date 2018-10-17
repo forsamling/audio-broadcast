@@ -1,9 +1,9 @@
-package no.royalone.audiobroadcast.controller;
+package no.forsamling.audiobroadcast.controller;
 
-import no.royalone.audiobroadcast.Global;
-import no.royalone.audiobroadcast.interfaces.AudioBroadCastEventsListener;
-import no.royalone.audiobroadcast.model.ClingDevice;
-import no.royalone.audiobroadcast.utils.Logger;
+import no.forsamling.audiobroadcast.Global;
+import no.forsamling.audiobroadcast.interfaces.AudioBroadCastEventsListener;
+import no.forsamling.audiobroadcast.model.ClingDevice;
+import no.forsamling.audiobroadcast.utils.Logger;
 
 import org.teleal.cling.model.meta.Device;
 import org.teleal.cling.model.meta.LocalDevice;

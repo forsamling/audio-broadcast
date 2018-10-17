@@ -1,11 +1,11 @@
-package no.royalone.audiobroadcast.controller;
+package no.forsamling.audiobroadcast.controller;
 
 import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
 
-import no.royalone.audiobroadcast.Global;
-import no.royalone.audiobroadcast.utils.Logger;
+import no.forsamling.audiobroadcast.Global;
+import no.forsamling.audiobroadcast.utils.Logger;
 
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.channel.Channel;

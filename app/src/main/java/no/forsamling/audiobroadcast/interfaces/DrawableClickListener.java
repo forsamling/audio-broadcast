@@ -1,4 +1,4 @@
-package no.royalone.audiobroadcast.interfaces;
+package no.forsamling.audiobroadcast.interfaces;
 
 /**
  * Created by royalone on 2017-01-06.

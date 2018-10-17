@@ -1,4 +1,4 @@
-package no.royalone.audiobroadcast.view;
+package no.forsamling.audiobroadcast.view;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -11,13 +11,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-import no.royalone.audiobroadcast.BaseApplication;
-import no.royalone.audiobroadcast.Global;
-import no.royalone.audiobroadcast.MainActivity;
-import com.royalone.audiobroadcast.R;
-import no.royalone.audiobroadcast.utils.AppSettings;
-import no.royalone.audiobroadcast.utils.Logger;
-import no.royalone.audiobroadcast.utils.Notice;
+import no.forsamling.audiobroadcast.BaseApplication;
+import no.forsamling.audiobroadcast.Global;
+import no.forsamling.audiobroadcast.MainActivity;
+import no.forsamling.audiobroadcast.R;
+import no.forsamling.audiobroadcast.utils.AppSettings;
+import no.forsamling.audiobroadcast.utils.Logger;
+import no.forsamling.audiobroadcast.utils.Notice;
 
 /**
  * Created by royalone on 2017-02-25.

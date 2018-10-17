@@ -1,4 +1,4 @@
-package no.royalone.audiobroadcast;
+package no.forsamling.audiobroadcast;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,10 +8,10 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.util.Log;
 
-import no.royalone.audiobroadcast.controller.ClientDetails;
-import no.royalone.audiobroadcast.controller.Playback;
-import no.royalone.audiobroadcast.controller.Server;
-import no.royalone.audiobroadcast.services.UPnPAudioService;
+import no.forsamling.audiobroadcast.controller.ClientDetails;
+import no.forsamling.audiobroadcast.controller.Playback;
+import no.forsamling.audiobroadcast.controller.Server;
+import no.forsamling.audiobroadcast.services.UPnPAudioService;
 
 import org.teleal.cling.model.meta.Icon;
 import org.teleal.cling.model.types.UDN;

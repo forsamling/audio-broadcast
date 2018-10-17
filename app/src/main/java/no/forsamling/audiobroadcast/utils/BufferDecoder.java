@@ -1,4 +1,4 @@
-package no.royalone.audiobroadcast.utils;
+package no.forsamling.audiobroadcast.utils;
 
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.channel.Channel;

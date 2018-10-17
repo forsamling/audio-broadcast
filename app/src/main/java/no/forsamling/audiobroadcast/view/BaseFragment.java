@@ -1,4 +1,4 @@
-package no.royalone.audiobroadcast.view;
+package no.forsamling.audiobroadcast.view;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-import no.royalone.audiobroadcast.BaseApplication;
+import no.forsamling.audiobroadcast.BaseApplication;
 
 
 public class BaseFragment extends Fragment {

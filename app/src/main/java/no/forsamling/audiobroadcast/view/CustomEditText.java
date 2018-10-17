@@ -1,4 +1,4 @@
-package no.royalone.audiobroadcast.view;
+package no.forsamling.audiobroadcast.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.EditText;
 
-import no.royalone.audiobroadcast.interfaces.DrawableClickListener;
+import no.forsamling.audiobroadcast.interfaces.DrawableClickListener;
 
 
 /**

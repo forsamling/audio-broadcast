@@ -1,4 +1,4 @@
-package no.royalone.audiobroadcast.model;
+package no.forsamling.audiobroadcast.model;
 
 import org.teleal.cling.model.meta.Device;
 

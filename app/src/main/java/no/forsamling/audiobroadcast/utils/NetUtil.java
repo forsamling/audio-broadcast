@@ -1,12 +1,12 @@
-package no.royalone.audiobroadcast.utils;
+package no.forsamling.audiobroadcast.utils;
 
 /**
  * Created by royalone on 2017-01-09.
  */
 
 import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+/*import android.net.ConnectivityManager;
+import android.net.NetworkInfo;*/
 import android.net.wifi.WifiManager;
 
 public class NetUtil {

@@ -1,4 +1,4 @@
-package no.royalone.audiobroadcast.controller;
+package no.forsamling.audiobroadcast.controller;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -8,10 +8,10 @@ import android.media.MediaRecorder;
 import android.media.audiofx.NoiseSuppressor;
 import android.os.Build.VERSION;
 
-import no.royalone.audiobroadcast.BaseApplication;
-import no.royalone.audiobroadcast.Global;
-import no.royalone.audiobroadcast.utils.Logger;
-import no.royalone.audiobroadcast.utils.Notice;
+import no.forsamling.audiobroadcast.BaseApplication;
+import no.forsamling.audiobroadcast.Global;
+import no.forsamling.audiobroadcast.utils.Logger;
+import no.forsamling.audiobroadcast.utils.Notice;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;

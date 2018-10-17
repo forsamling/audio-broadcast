@@ -1,4 +1,4 @@
-package no.royalone.audiobroadcast.view;
+package no.forsamling.audiobroadcast.view;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,10 +9,10 @@ import android.view.animation.Animation;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import no.royalone.audiobroadcast.Global;
-import com.royalone.audiobroadcast.R;
-import no.royalone.audiobroadcast.model.ClingDevice;
-import no.royalone.audiobroadcast.utils.Logger;
+import no.forsamling.audiobroadcast.Global;
+import no.forsamling.audiobroadcast.R;
+import no.forsamling.audiobroadcast.model.ClingDevice;
+import no.forsamling.audiobroadcast.utils.Logger;
 
 import java.util.ArrayList;
 

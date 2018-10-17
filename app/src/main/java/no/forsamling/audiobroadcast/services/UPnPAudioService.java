@@ -1,4 +1,4 @@
-package no.royalone.audiobroadcast.services;
+package no.forsamling.audiobroadcast.services;
 
 import android.app.PendingIntent;
 import android.content.Context;
@@ -12,20 +12,20 @@ import android.os.Looper;
 import android.os.PowerManager;
 import android.support.v4.app.NotificationCompat;
 
-import no.royalone.audiobroadcast.BaseApplication;
-import no.royalone.audiobroadcast.Global;
-import no.royalone.audiobroadcast.MainActivity;
-import com.royalone.audiobroadcast.R;
-import no.royalone.audiobroadcast.controller.AudioRegistryListener;
-import no.royalone.audiobroadcast.controller.Client;
-import no.royalone.audiobroadcast.controller.HeadSetReceiver;
-import no.royalone.audiobroadcast.controller.Playback;
-import no.royalone.audiobroadcast.controller.Recorder;
-import no.royalone.audiobroadcast.controller.Server;
-import no.royalone.audiobroadcast.interfaces.AudioBroadCastEventsListener;
-import no.royalone.audiobroadcast.model.ClingDevice;
-import no.royalone.audiobroadcast.utils.AppSettings;
-import no.royalone.audiobroadcast.utils.Logger;
+import no.forsamling.audiobroadcast.BaseApplication;
+import no.forsamling.audiobroadcast.Global;
+import no.forsamling.audiobroadcast.MainActivity;
+import no.forsamling.audiobroadcast.R;
+import no.forsamling.audiobroadcast.controller.AudioRegistryListener;
+import no.forsamling.audiobroadcast.controller.Client;
+import no.forsamling.audiobroadcast.controller.HeadSetReceiver;
+import no.forsamling.audiobroadcast.controller.Playback;
+import no.forsamling.audiobroadcast.controller.Recorder;
+import no.forsamling.audiobroadcast.controller.Server;
+import no.forsamling.audiobroadcast.interfaces.AudioBroadCastEventsListener;
+import no.forsamling.audiobroadcast.model.ClingDevice;
+import no.forsamling.audiobroadcast.utils.AppSettings;
+import no.forsamling.audiobroadcast.utils.Logger;
 
 import org.teleal.cling.UpnpService;
 import org.teleal.cling.UpnpServiceConfiguration;
@@ -127,7 +127,7 @@ public class UPnPAudioService extends AndroidUpnpServiceImpl {
   }
 
   public boolean runServer() {
-    DeviceDetails details = new DeviceDetails(AppSettings.with(BaseApplication.getContext()).getDeviceName(), new ManufacturerDetails("ROYALONE"), new ModelDetails("ROYALONE", "Microphone for broadcasting within a local network.", "v1.0"));
+    DeviceDetails details = new DeviceDetails(AppSettings.with(BaseApplication.getContext()).getDeviceName(), new ManufacturerDetails("OALFF"), new ModelDetails("OALFF", "Microphone for broadcasting within a local network.", "v1.0"));
     LocalService service = new AnnotationLocalServiceBinder().read(ClingService.class);
     service.setManager(new DefaultServiceManager(service, ClingService.class));
 

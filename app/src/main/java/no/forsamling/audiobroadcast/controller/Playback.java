@@ -1,10 +1,10 @@
-package no.royalone.audiobroadcast.controller;
+package no.forsamling.audiobroadcast.controller;
 
 import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
 
-import no.royalone.audiobroadcast.Global;
+import no.forsamling.audiobroadcast.Global;
 
 public class Playback {
 //    private final AudioTrack audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC, Global.RECORDER_SAMPLERATE,    AudioFormat.CHANNEL_OUT_MONO, Global.RECORDER_AUDIO_ENCODING, AudioTrack.getMinBufferSize(Global.RECORDER_SAMPLERATE, Global.RECORDER_CHANNELS, Global.RECORDER_AUDIO_ENCODING),  AudioTrack.MODE_STREAM);

@@ -1,4 +1,4 @@
-package no.royalone.audiobroadcast.utils;
+package no.forsamling.audiobroadcast.utils;
 
 import android.annotation.TargetApi;
 import android.content.Context;

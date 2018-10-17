@@ -1,9 +1,9 @@
-package no.royalone.audiobroadcast.controller;
+package no.forsamling.audiobroadcast.controller;
 
 import android.util.Log;
 
-import no.royalone.audiobroadcast.Global;
-import no.royalone.audiobroadcast.utils.PortSeeker;
+import no.forsamling.audiobroadcast.Global;
+import no.forsamling.audiobroadcast.utils.PortSeeker;
 
 import org.jboss.netty.bootstrap.ServerBootstrap;
 import org.jboss.netty.channel.ChannelFactory;

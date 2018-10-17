@@ -1,4 +1,4 @@
-package no.royalone.audiobroadcast.view;
+package no.forsamling.audiobroadcast.view;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.royalone.audiobroadcast.R;
-import no.royalone.audiobroadcast.model.ClingDevice;
+import no.forsamling.audiobroadcast.R;
+import no.forsamling.audiobroadcast.model.ClingDevice;
 
 import java.util.ArrayList;
 

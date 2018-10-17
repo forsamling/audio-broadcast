@@ -4,7 +4,7 @@
   android:layout_height="match_parent"
   android:padding="8dp">
 
-  <com.royalone.audiobroadcast.view.CustomEditText
+  <no.forsamling.audiobroadcast.view.CustomEditText
     android:id="@+id/txtDeviceName"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -17,6 +17,6 @@
     android:maxLength="25"
     android:minLines="1">
     <requestFocus />
-  </com.royalone.audiobroadcast.view.CustomEditText>
+  </no.forsamling.audiobroadcast.view.CustomEditText>
 
 </RelativeLayout>

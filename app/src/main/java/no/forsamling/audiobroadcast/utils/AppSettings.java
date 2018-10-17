@@ -1,9 +1,9 @@
-package no.royalone.audiobroadcast.utils;
+package no.forsamling.audiobroadcast.utils;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
-import no.royalone.audiobroadcast.Global;
+import no.forsamling.audiobroadcast.Global;
 
 public class AppSettings {
 

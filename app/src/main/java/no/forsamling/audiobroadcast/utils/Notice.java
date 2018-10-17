@@ -1,4 +1,4 @@
-package no.royalone.audiobroadcast.utils;
+package no.forsamling.audiobroadcast.utils;
 
 import android.content.Context;
 import android.view.Gravity;
@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import no.royalone.audiobroadcast.BaseApplication;
-import com.royalone.audiobroadcast.R;
+import no.forsamling.audiobroadcast.BaseApplication;
+import no.forsamling.audiobroadcast.R;
 
 /**
  * Created by royalone on 2016-12-23.

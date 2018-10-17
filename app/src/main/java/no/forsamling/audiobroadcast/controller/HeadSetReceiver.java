@@ -1,10 +1,10 @@
-package no.royalone.audiobroadcast.controller;
+package no.forsamling.audiobroadcast.controller;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import no.royalone.audiobroadcast.utils.Notice;
+import no.forsamling.audiobroadcast.utils.Notice;
 
 public class HeadSetReceiver extends BroadcastReceiver {
   @Override

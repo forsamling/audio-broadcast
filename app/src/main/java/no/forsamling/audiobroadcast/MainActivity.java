@@ -1,4 +1,4 @@
-package no.royalone.audiobroadcast;
+package no.forsamling.audiobroadcast;
 
 import android.Manifest;
 import android.app.AlarmManager;
@@ -26,18 +26,18 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.royalone.audiobroadcast.R;
+import no.forsamling.audiobroadcast.R;
 
-import no.royalone.audiobroadcast.interfaces.AudioBroadCastEventsListener;
-import no.royalone.audiobroadcast.model.ClingDevice;
-import no.royalone.audiobroadcast.services.UPnPAudioService;
-import no.royalone.audiobroadcast.utils.AppSettings;
-import no.royalone.audiobroadcast.utils.Logger;
-import no.royalone.audiobroadcast.utils.Notice;
-import no.royalone.audiobroadcast.view.AudioBroadcastPreferenceFragment;
-import no.royalone.audiobroadcast.view.ClientDevicesAdapter;
-import no.royalone.audiobroadcast.view.CustomTextView;
-import no.royalone.audiobroadcast.view.ServerDevicesAdapter;
+import no.forsamling.audiobroadcast.interfaces.AudioBroadCastEventsListener;
+import no.forsamling.audiobroadcast.model.ClingDevice;
+import no.forsamling.audiobroadcast.services.UPnPAudioService;
+import no.forsamling.audiobroadcast.utils.AppSettings;
+import no.forsamling.audiobroadcast.utils.Logger;
+import no.forsamling.audiobroadcast.utils.Notice;
+import no.forsamling.audiobroadcast.view.AudioBroadcastPreferenceFragment;
+import no.forsamling.audiobroadcast.view.ClientDevicesAdapter;
+import no.forsamling.audiobroadcast.view.CustomTextView;
+import no.forsamling.audiobroadcast.view.ServerDevicesAdapter;
 
 import org.teleal.cling.model.meta.Device;
 import org.teleal.cling.model.meta.RemoteDevice;

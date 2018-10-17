@@ -1,7 +1,6 @@
-package no.royalone.audiobroadcast.interfaces;
+package no.forsamling.audiobroadcast.interfaces;
 
 import org.teleal.cling.model.meta.Device;
-import org.teleal.cling.model.meta.Icon;
 import org.teleal.cling.model.meta.RemoteDevice;
 
 public interface AudioBroadCastEventsListener {
