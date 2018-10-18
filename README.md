@@ -1,4 +1,4 @@
-# translations-app-android
+# Audio Broadcast [![Build Status](https://travis-ci.com/forsamling/audio-broadcast.svg?branch=master)](https://travis-ci.com/forsamling/audio-broadcast)
 An audible translation (audio broadcast) app for Android
 
 # Libraries in use:
