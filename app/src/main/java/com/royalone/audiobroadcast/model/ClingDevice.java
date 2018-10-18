@@ -2,7 +2,9 @@ package com.royalone.audiobroadcast.model;
 
 import org.teleal.cling.model.meta.Device;
 
-public class ClingDevice {
+import java.io.Serializable;
+
+public class ClingDevice implements Serializable{
     public Device<?, ?, ?> device;
 
     public ClingDevice(Device<?, ?, ?> device) {

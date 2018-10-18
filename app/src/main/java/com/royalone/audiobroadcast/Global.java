@@ -107,7 +107,7 @@ public class Global {
   public static volatile boolean isListening = false;
   public static volatile boolean isSpeaking = false;
   public static volatile List<ClientDetails> connectedClients = new ArrayList();
-
+  public static volatile List<String> connectedUsers = new ArrayList();
   public static boolean isHeadSet() {
     AudioManager audioManager = (AudioManager) BaseApplication.getContext().getSystemService(Context.AUDIO_SERVICE);
     Log.println(Log.ASSERT, "WiredHeadsetOn = ", "aa" + audioManager.isWiredHeadsetOn());
@@ -115,5 +115,5 @@ public class Global {
     Log.i("SpeakerphoneOn = ", audioManager.isSpeakerphoneOn() + "");
     return audioManager.isWiredHeadsetOn();
   }
-
+  public static final String NOTIFICATION_TEXT_WAITING_FOR_LISTENERS = "Waiting for clients...";
 }

@@ -132,12 +132,13 @@ public class UPnPAudioService extends AndroidUpnpServiceImpl {
     service.setManager(new DefaultServiceManager(service, ClingService.class));
 
     try {
-      LocalDevice device = new LocalDevice(new DeviceIdentity(Global.AUDIO_BROADCAST_UDN), new UDADeviceType(Global.DEVICE_TYPE, 1), details, Global.getDeviceIcon(), service);
-      this._Binder.getRegistry().addDevice(device);
-      acquireWakeLock();
-      Global._server = new Server();
-      Global._server.run();
-      new Thread(new Recorder(), "recorder").start();
+        LocalDevice device = new LocalDevice(new DeviceIdentity(Global.AUDIO_BROADCAST_UDN), new UDADeviceType(Global.DEVICE_TYPE, 1), details, Global.getDeviceIcon(), service);
+        this._Binder.getRegistry().addDevice(device);
+        acquireWakeLock();
+        Global._server = new Server();
+        Global._server.run();
+        new Thread(new Recorder(), "recorder").start();
+        updateNotificationsWithListenersCount();
       Global._playback = new Playback();
     } catch (ValidationException e) {
       e.printStackTrace();
@@ -318,18 +319,25 @@ public class UPnPAudioService extends AndroidUpnpServiceImpl {
       }
     }
 
+    MainActivity.getInstance().runOnUiThread(new Runnable() {
+      @Override
+      public void run() {
+        client.disconnectManually();
+      }
+    });
+
     if (device != null) {
       final Service service = device.findService(new UDAServiceType(Global.SERVICE_TYPE));
       ActionInvocation setTargetInvocation = new ActionInvocation(service.getAction("UserDisconnect"));
-      setTargetInvocation.setInput("Username", Global.CONNECTED_TO_SERVERNAME);
+      setTargetInvocation.setInput("Username", AppSettings.with(BaseApplication.getContext()).getDeviceName());
       setTargetInvocation.setInput("Version", "1.0");
       this._Binder.getControlPoint().execute(new ActionCallback(setTargetInvocation) {
-
         @Override
         public void success(ActionInvocation invocation) {
+          Logger.print("Stop Listening");
           Global.CONNECTED_TO_ADDRESS = "";
           Global.CONNECTED_TO_PORT = 0;
-          client.disconnect();
+
           Global.audioService.eventsListener.onServerDisConnected(AppSettings.with(BaseApplication.getContext()).getDeviceName());
         }
 
@@ -345,30 +353,28 @@ public class UPnPAudioService extends AndroidUpnpServiceImpl {
     if (Global.isListening) {
       updateNotification(Global.CONNECTED_TO_SERVERNAME, "Connected");
     } else if (Global.isSpeaking) {
-      int listeners = Global.connectedClients.size();
+      int listeners = Global.connectedUsers.size();
       if (listeners > 0) {
         updateNotification(AppSettings.with(BaseApplication.getContext()).getDeviceName(), String.valueOf(listeners) + " client" + (listeners == 1 ? "" : "s"));
       } else {
-        updateNotification(AppSettings.with(BaseApplication.getContext()).getDeviceName(), NOTIFICATION_TEXT_WAITING_FOR_LISTENERS);
+        updateNotification(AppSettings.with(BaseApplication.getContext()).getDeviceName(), Global.NOTIFICATION_TEXT_WAITING_FOR_LISTENERS);
       }
     } else {
       stopForeground(true);
     }
   }
 
-  private static final String NOTIFICATION_TEXT_WAITING_FOR_LISTENERS = "Waiting for clients...";
+
 
 //  https://stackoverflow.com/questions/31264157/how-to-avoid-black-screen-when-intent-flag-activity-new-task-intent-flag-activ/31264611
   protected void updateNotification(String broadcastName, String subtitle) {
     Intent intent = new Intent(this, MainActivity.class);
 
-    intent.setAction(Intent.ACTION_MAIN);
-    intent.addCategory(Intent.CATEGORY_LAUNCHER);
-
-    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-
-    startForeground(2, new NotificationCompat.Builder(getApplicationContext()).setSmallIcon(R.drawable.ic_headset_mic).setWhen(System.currentTimeMillis()).setContentTitle("AudioBroadCast: " + broadcastName).setContentText(subtitle).setContentIntent(PendingIntent.getActivity(this, 0, intent, 0)).setOngoing(true).build());
+//    intent.setAction(Intent.ACTION_MAIN);
+//    intent.addCategory(Intent.CATEGORY_LAUNCHER);
+//    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+    startForeground(2, new NotificationCompat.Builder(getApplicationContext()).setSmallIcon(R.drawable.ic_headset_mic).
+            setWhen(System.currentTimeMillis()).setContentTitle("AudioBroadCast: " + broadcastName)
+            .setContentText(subtitle).setContentIntent(PendingIntent.getActivity(BaseApplication.getContext(), 0, intent, 0)).setOngoing(true).build());
   }
-
-
 }
