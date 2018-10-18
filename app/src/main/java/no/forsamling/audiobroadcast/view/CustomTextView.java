@@ -7,7 +7,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.widget.TextView;
+import android.support.v7.widget.AppCompatTextView;
 
 import no.forsamling.audiobroadcast.interfaces.DrawableClickListener;
 
@@ -16,7 +16,7 @@ import no.forsamling.audiobroadcast.interfaces.DrawableClickListener;
  * Created by royalone on 2017-01-06.
  */
 
-public class CustomTextView extends TextView {
+public class CustomTextView extends AppCompatTextView {
     private Drawable drawableRight;
     private Drawable drawableLeft;
     private Drawable drawableTop;
