@@ -155,7 +155,7 @@ public class UPnPAudioService extends AndroidUpnpServiceImpl {
 
   public void acquireWakeLock() {
     try {
-      wakeLock = ((PowerManager) getApplicationContext().getSystemService(Context.POWER_SERVICE)).newWakeLock(1, "AUDIOBROADCAST_SERVER_CPU");
+      wakeLock = ((PowerManager) getApplicationContext().getSystemService(Context.POWER_SERVICE)).newWakeLock(1, "audiobroadcast:server_cpu");
       wakeLock.acquire();
       WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
       wifiLock = wifiManager.createWifiLock("AUDIOBROADCAST_SERVER_WIFI");
