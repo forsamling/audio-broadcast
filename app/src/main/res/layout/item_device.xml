@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-  <com.royalone.audiobroadcast.view.CustomTextView
+  <no.forsamling.audiobroadcast.view.CustomTextView
     android:id="@+id/txt_device_name"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

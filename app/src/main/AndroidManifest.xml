@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.royalone.audiobroadcast">
+  package="no.forsamling.audiobroadcast">
 
   <uses-permission android:name="android.permission.INTERNET"/>
   <uses-permission android:name="android.permission.WAKE_LOCK"/>
@@ -14,7 +14,7 @@
   <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
 
   <application
-    android:name=".BaseApplication"
+    android:name="no.forsamling.audiobroadcast.BaseApplication"
     android:allowBackup="true"
     android:icon="@drawable/audio_broadcast"
     android:label="@string/app_name"
@@ -22,12 +22,12 @@
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
 
-    <service android:name="com.royalone.audiobroadcast.services.UPnPAudioService"/>
+    <service android:name="no.forsamling.audiobroadcast.services.UPnPAudioService"/>
     <service android:name="org.teleal.cling.android.AndroidUpnpServiceImpl"/>
 
     <activity
-        android:launchMode="singleTop"
-      android:name=".MainActivity"
+      android:launchMode="singleTop"
+      android:name="no.forsamling.audiobroadcast.MainActivity"
       android:label="@string/app_name">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
@@ -36,7 +36,7 @@
       </intent-filter>
     </activity>
 
-    <receiver  android:name=".interfaces.IncomingCallReceiver" android:enabled="true" android:exported="true">
+    <receiver  android:name="no.forsamling.audiobroadcast.interfaces.IncomingCallReceiver" android:enabled="true" android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.PHONE_STATE" />
       </intent-filter>
