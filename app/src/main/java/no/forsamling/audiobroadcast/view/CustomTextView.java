@@ -88,9 +88,9 @@ public class CustomTextView extends TextView {
         {
             Typeface myFont = Typeface.createFromAsset(context.getAssets(), "font/MyriadPro-Regular.otf");
             if(bold)
-                setTypeface(myFont,1);
+                setTypeface(myFont, Typeface.BOLD);
             else
-                setTypeface(myFont,0);
+                setTypeface(myFont, Typeface.NORMAL);
         }
         catch (Exception e) {
 
