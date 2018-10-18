@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-  compileSdkVersion 27
+  compileSdkVersion 28
   buildToolsVersion '28.0.3'
   defaultConfig {
     applicationId "no.forsamling.audiobroadcast"
@@ -27,8 +27,8 @@ android {
 }
 
 dependencies {
-  implementation 'com.android.support:appcompat-v7:27.+'
-  implementation 'com.android.support:design:27.+'
+  implementation 'com.android.support:appcompat-v7:28.+'
+  implementation 'com.android.support:design:28.+'
   implementation 'org.teleal.cling:cling-core:1.0.5+'
   implementation 'org.teleal.cling:cling-support:1.0.5+'
   annotationProcessor files('libs/butterknife-7.0.1.jar')
