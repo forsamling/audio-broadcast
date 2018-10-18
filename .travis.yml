@@ -16,12 +16,7 @@ android:
     # Specify at least one system image,
     # if you need to run emulator(s) during your tests
     - sys-img-armeabi-v7a-android-26
-    - sys-img-armeabi-v7a-android-17
+    - sys-img-armeabi-v7a-android-24
 
-  licenses:
-    - android-sdk-preview-license-.+
-    - android-sdk-license-.+
-    - google-gdk-license-.+
-  
-  before_install: 
-    - yes | sdkmanager "platforms;android-27"
+    before_install:
+      - yes | sdkmanager "platforms;android-27"
