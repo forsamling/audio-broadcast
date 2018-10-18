@@ -373,7 +373,7 @@ public class UPnPAudioService extends AndroidUpnpServiceImpl {
 //    intent.setAction(Intent.ACTION_MAIN);
 //    intent.addCategory(Intent.CATEGORY_LAUNCHER);
 //    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-    startForeground(2, new NotificationCompat.Builder(getApplicationContext()).setSmallIcon(R.drawable.ic_headset_mic).
+    startForeground(2, new NotificationCompat.Builder(getApplicationContext()).setSmallIcon(R.drawable.ic_stat_headset_mic).
             setWhen(System.currentTimeMillis()).setContentTitle("AudioBroadCast: " + broadcastName)
             .setContentText(subtitle).setContentIntent(PendingIntent.getActivity(BaseApplication.getContext(), 0, intent, 0)).setOngoing(true).build());
   }
