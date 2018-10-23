@@ -23,8 +23,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.royalone.audiobroadcast.interfaces.AudioBroadCastEventsListener;
 import com.royalone.audiobroadcast.model.ClingDevice;
@@ -52,17 +55,15 @@ public class MainActivity extends AppCompatActivity implements ServerDevicesAdap
   public ClientDevicesAdapter clientDevicesAdapter;
   public ServerDevicesAdapter serverDevicesAdapter;
 
-  @Bind(R.id.list_remote_devices)
-  ListView listRemoteDevices;
-  @Bind(R.id.content)
-  View layoutContent;
-  @Bind(R.id.txt_devices_not_found)
-  CustomTextView txtDevicesNotFound;
-  @Bind(R.id.layout_devices)
-  View layoutDevices;
+  @Bind(R.id.list_remote_devices) ListView listRemoteDevices;
+  @Bind(R.id.content) View layoutContent;
+  @Bind(R.id.txt_devices_not_found) CustomTextView txtDevicesNotFound;
+  @Bind(R.id.layout_devices) View layoutDevices;
 
-  @Bind(R.id.swipeRefreshLayout)
-  SwipeRefreshLayout swipeRefreshLayout;
+  @Bind(R.id.swipeRefreshLayout) SwipeRefreshLayout swipeRefreshLayout;
+  @Bind(R.id.layout_server_settings) LinearLayout layoutServerSettings;
+  @Bind(R.id.btn_start_stop) ToggleButton btnStartStop;
+  @Bind(R.id.btn_mute_unmute) ToggleButton btnMuteUnMute;
   protected EventsListener eventListener;
 
   private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -74,9 +75,13 @@ public class MainActivity extends AppCompatActivity implements ServerDevicesAdap
         case R.id.navigation_home:
           layoutDevices.setVisibility(View.VISIBLE);
           layoutContent.setVisibility(View.GONE);
+
+          if (AppSettings.with(BaseApplication.getContext()).isBroadCastMode())
+           layoutServerSettings.setVisibility(View.VISIBLE);
           return true;
         case R.id.navigation_settings:
           changeFragment(audioBroadcastPreferenceFragment);
+          layoutServerSettings.setVisibility(View.GONE);
           layoutDevices.setVisibility(View.GONE);
           layoutContent.setVisibility(View.VISIBLE);
           return true;
@@ -232,6 +237,34 @@ public class MainActivity extends AppCompatActivity implements ServerDevicesAdap
     getValidSampleRates();
 
 //    disableAlarms();
+
+    btnStartStop.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+      @Override
+      public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if(isChecked) {
+          Global.audioService.runServer();
+          btnMuteUnMute.setVisibility(View.VISIBLE);
+
+          Global.audioService.updateNotificationsWithListenersCount();
+        } else {
+          Global.audioService.stopServer();
+          btnMuteUnMute.setVisibility(View.GONE);
+          AppSettings.with(BaseApplication.getContext()).setMute(false);
+
+          Global.audioService.updateNotificationsWithListenersCount();
+        }
+      }
+    });
+
+    btnMuteUnMute.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+      @Override
+      public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if(isChecked)
+          AppSettings.with(BaseApplication.getContext()).setMute(true);
+        else
+          AppSettings.with(BaseApplication.getContext()).setMute(false);
+      }
+    });
   }
 
   private void disableAlarms() {
@@ -459,13 +492,19 @@ public class MainActivity extends AppCompatActivity implements ServerDevicesAdap
     if (AppSettings.with(BaseApplication.getContext()).isBroadCastMode()) {
 
       Global.audioService.stopServer();
-      Global.audioService.runServer();
+//      Global.audioService.runServer();
+      AppSettings.with(BaseApplication.getContext()).setMute(false);
 
       listRemoteDevices.setAdapter(clientDevicesAdapter);
 
       setTitle(getString(R.string.app_name) + " - " + getString(R.string.mode_broadcast));
 
       swipeRefreshLayout.setEnabled(false);
+
+      layoutServerSettings.setVisibility(View.VISIBLE);
+
+      btnStartStop.setChecked(false);
+      btnMuteUnMute.setVisibility(View.GONE);
     } else {
 
       if (Global.isListening) {
@@ -480,6 +519,8 @@ public class MainActivity extends AppCompatActivity implements ServerDevicesAdap
       setTitle(getString(R.string.app_name) + " - " + getString(R.string.mode_listen));
 
       swipeRefreshLayout.setEnabled(true);
+
+      layoutServerSettings.setVisibility(View.GONE);
     }
   }
 

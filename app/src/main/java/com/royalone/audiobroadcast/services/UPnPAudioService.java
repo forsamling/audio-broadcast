@@ -350,15 +350,20 @@ public class UPnPAudioService extends AndroidUpnpServiceImpl {
   }
 
   public void updateNotificationsWithListenersCount() {
+    String strNotification = "";
     if (Global.isListening) {
+
       updateNotification(Global.CONNECTED_TO_SERVERNAME, "Connected");
     } else if (Global.isSpeaking) {
       int listeners = Global.connectedUsers.size();
+
+
       if (listeners > 0) {
-        updateNotification(AppSettings.with(BaseApplication.getContext()).getDeviceName(), String.valueOf(listeners) + " client" + (listeners == 1 ? "" : "s"));
+        strNotification = String.valueOf(listeners) + " client" + (listeners == 1 ? "" : "s");
       } else {
-        updateNotification(AppSettings.with(BaseApplication.getContext()).getDeviceName(), Global.NOTIFICATION_TEXT_WAITING_FOR_LISTENERS);
+        strNotification = Global.NOTIFICATION_TEXT_WAITING_FOR_LISTENERS;
       }
+      updateNotification(AppSettings.with(BaseApplication.getContext()).getDeviceName(), strNotification);
     } else {
       stopForeground(true);
     }

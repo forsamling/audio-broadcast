@@ -2,7 +2,9 @@ package com.royalone.audiobroadcast.controller;
 
 import android.util.Log;
 
+import com.royalone.audiobroadcast.BaseApplication;
 import com.royalone.audiobroadcast.Global;
+import com.royalone.audiobroadcast.utils.AppSettings;
 import com.royalone.audiobroadcast.utils.PortSeeker;
 import com.royalone.audiobroadcast.utils.Notice;
 
@@ -69,9 +71,10 @@ public class Server {
     }
 
     public void stream(byte[] data) {
-        for (ClientDetails cd : Global.connectedClients) {
-            cd.writeData(data);
-        }
+        if(!AppSettings.with(BaseApplication.getContext()).isMute())
+            for (ClientDetails cd : Global.connectedClients) {
+                cd.writeData(data);
+            }
     }
 
     public void stop() {

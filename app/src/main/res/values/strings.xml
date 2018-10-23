@@ -19,4 +19,8 @@
   <string name="btn_cancel">Cancel</string>
   <string name="not_devices_found">No devices found</string>
   <string name="crash_toast_text">The App is crashed, please send the mail to developer.</string>
+    <string name="start">Start</string>
+  <string name="stop">Stop</string>
+  <string name="mute">Mute</string>
+  <string name="unmute">UnMute</string>
 </resources>
