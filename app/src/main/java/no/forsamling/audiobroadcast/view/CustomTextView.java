@@ -7,7 +7,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.support.v7.widget.AppCompatTextView;
+import android.widget.TextView;
 
 import no.forsamling.audiobroadcast.interfaces.DrawableClickListener;
 
@@ -16,7 +16,7 @@ import no.forsamling.audiobroadcast.interfaces.DrawableClickListener;
  * Created by royalone on 2017-01-06.
  */
 
-public class CustomTextView extends AppCompatTextView {
+public class CustomTextView extends TextView {
     private Drawable drawableRight;
     private Drawable drawableLeft;
     private Drawable drawableTop;
@@ -88,9 +88,9 @@ public class CustomTextView extends AppCompatTextView {
         {
             Typeface myFont = Typeface.createFromAsset(context.getAssets(), "font/MyriadPro-Regular.otf");
             if(bold)
-                setTypeface(myFont, Typeface.BOLD);
+                setTypeface(myFont,1);
             else
-                setTypeface(myFont, Typeface.NORMAL);
+                setTypeface(myFont,0);
         }
         catch (Exception e) {
 

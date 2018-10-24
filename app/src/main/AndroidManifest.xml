@@ -11,23 +11,25 @@
   <uses-permission android:name="android.permission.READ_PHONE_STATE" />
   <uses-permission android:name="android.permission.CALL_PHONE" />
   <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+
+
   <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
 
   <application
-    android:name="no.forsamling.audiobroadcast.BaseApplication"
+    android:name=".BaseApplication"
     android:allowBackup="true"
-    android:icon="@drawable/audio_broadcast"
+    android:icon="@mipmap/ic_launcher"
     android:label="@string/app_name"
-    android:roundIcon="@drawable/audio_broadcast"
+    android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
 
-    <service android:name="no.forsamling.audiobroadcast.services.UPnPAudioService"/>
+    <service android:name=".services.UPnPAudioService"/>
     <service android:name="org.teleal.cling.android.AndroidUpnpServiceImpl"/>
 
     <activity
-      android:launchMode="singleTop"
-      android:name="no.forsamling.audiobroadcast.MainActivity"
+        android:launchMode="singleTop"
+      android:name=".MainActivity"
       android:label="@string/app_name">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
@@ -36,7 +38,7 @@
       </intent-filter>
     </activity>
 
-    <receiver  android:name="no.forsamling.audiobroadcast.interfaces.IncomingCallReceiver" android:enabled="true" android:exported="true">
+    <receiver  android:name=".interfaces.IncomingCallReceiver" android:enabled="true" android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.PHONE_STATE" />
       </intent-filter>

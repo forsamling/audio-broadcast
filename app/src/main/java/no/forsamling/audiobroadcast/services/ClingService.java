@@ -1,8 +1,7 @@
 package no.forsamling.audiobroadcast.services;
 
-import no.forsamling.audiobroadcast.BaseApplication;
 import no.forsamling.audiobroadcast.Global;
-import no.forsamling.audiobroadcast.utils.AppSettings;
+
 import no.forsamling.audiobroadcast.utils.Logger;
 import no.forsamling.audiobroadcast.utils.Notice;
 

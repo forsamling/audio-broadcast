@@ -6,7 +6,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:orientation="vertical"
-  tools:context="no.forsamling.audiobroadcast.MainActivity">
+  tools:context=".MainActivity">
 
   <FrameLayout
 
@@ -54,6 +54,28 @@
       android:layout_height="wrap_content"></FrameLayout>
   </FrameLayout>
 
+  <LinearLayout
+      android:id="@+id/layout_server_settings"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+    <ToggleButton
+        android:id="@+id/btn_start_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="ToggleButton"
+        android:textOff="@string/start"
+        android:textOn="@string/stop" />
+
+    <ToggleButton
+        android:id="@+id/btn_mute_unmute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textOff="@string/mute"
+        android:textOn="@string/unmute"/>
+  </LinearLayout>
   <android.support.design.widget.BottomNavigationView
     android:id="@+id/navigation"
     android:layout_width="match_parent"

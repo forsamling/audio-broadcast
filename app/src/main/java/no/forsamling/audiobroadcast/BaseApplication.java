@@ -3,8 +3,6 @@ package no.forsamling.audiobroadcast;
 import android.app.Application;
 import android.content.Context;
 
-import no.forsamling.audiobroadcast.R;
-
 import org.acra.ACRA;
 import org.acra.ReportingInteractionMode;
 import org.acra.annotation.ReportsCrashes;
@@ -17,7 +15,7 @@ import org.acra.annotation.ReportsCrashes;
 
 
 @ReportsCrashes(
-  mailTo = "apps@forsamling.no", // my email here
+  mailTo = "stuntblitz@gmail.com", // my email here
   mode = ReportingInteractionMode.TOAST,
   resToastText = R.string.crash_toast_text)
 public class BaseApplication extends Application {
@@ -28,6 +26,7 @@ public class BaseApplication extends Application {
     public static BaseApplication getInstance() {
         return _application;
     }
+
 
     @Override
     public void onCreate() {

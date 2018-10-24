@@ -24,7 +24,6 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by royal on 8/5/2018.
@@ -45,7 +44,7 @@ public class Global {
 
   public static String getDeviceBrand(){
     StringBuilder sb = new StringBuilder();
-    if (!Build.MODEL.toLowerCase(Locale.getDefault()).startsWith(Build.MANUFACTURER.toLowerCase(Locale.getDefault()))) {
+    if (!Build.MODEL.toLowerCase().startsWith(Build.MANUFACTURER.toLowerCase())) {
       sb.append(Build.MANUFACTURER);
       sb.append(" ");
     }

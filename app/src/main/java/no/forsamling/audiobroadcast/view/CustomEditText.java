@@ -7,7 +7,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.support.v7.widget.AppCompatEditText;
+import android.widget.EditText;
 
 import no.forsamling.audiobroadcast.interfaces.DrawableClickListener;
 
@@ -16,7 +16,7 @@ import no.forsamling.audiobroadcast.interfaces.DrawableClickListener;
  * Created by royalone on 2017-01-06.
  */
 
-public class CustomEditText extends AppCompatEditText {
+public class CustomEditText extends EditText {
 
     private Drawable drawableRight;
     private Drawable drawableLeft;

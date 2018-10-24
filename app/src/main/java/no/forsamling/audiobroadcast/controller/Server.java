@@ -2,7 +2,9 @@ package no.forsamling.audiobroadcast.controller;
 
 import android.util.Log;
 
+import no.forsamling.audiobroadcast.BaseApplication;
 import no.forsamling.audiobroadcast.Global;
+import no.forsamling.audiobroadcast.utils.AppSettings;
 import no.forsamling.audiobroadcast.utils.PortSeeker;
 
 import org.jboss.netty.bootstrap.ServerBootstrap;
@@ -68,9 +70,10 @@ public class Server {
     }
 
     public void stream(byte[] data) {
-        for (ClientDetails cd : Global.connectedClients) {
-            cd.writeData(data);
-        }
+        if(!AppSettings.with(BaseApplication.getContext()).isMute())
+            for (ClientDetails cd : Global.connectedClients) {
+                cd.writeData(data);
+            }
     }
 
     public void stop() {

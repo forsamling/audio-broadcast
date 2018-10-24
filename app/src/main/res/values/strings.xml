@@ -1,9 +1,9 @@
 <resources>
-  <string name="app_name">Audio Broadcast</string>
+  <string name="app_name">AudioBroadCast</string>
   <string name="title_home">Home</string>
   <string name="title_settings">Settings</string>
   <string name="name_device">Device Name</string>
-  <string name="name_device_summary">Name seen by listeners</string>
+  <string name="name_device_summary">Name of Device Seen by Listeners</string>
   <string name="pref_name_device">Device Name</string>
 
   <string-array name="app_mode">
@@ -11,12 +11,16 @@
     <item>@string/mode_broadcast</item>
   </string-array>
 
-  <string name="mode_listen">Listen</string>
-  <string name="mode_broadcast">Broadcast</string>
-  <string name="pref_app_mode">Listen or BroadCast</string>
-  <string name="pref_app_mode_summary">Choose between Listen and BroadCast mode</string>
+  <string name="mode_listen">Listen Mode</string>
+  <string name="mode_broadcast">Broadcast Mode</string>
+  <string name="pref_app_mode">Listen Or BroadCast</string>
+  <string name="pref_app_mode_summary">Listen Or BroadCast Mode</string>
   <string name="btn_save">Save</string>
   <string name="btn_cancel">Cancel</string>
   <string name="not_devices_found">No devices found</string>
-  <string name="crash_toast_text">Audio Broadcast crashed, please send the e-mail to the developer.</string>
+  <string name="crash_toast_text">The App is crashed, please send the mail to developer.</string>
+    <string name="start">Start</string>
+  <string name="stop">Stop</string>
+  <string name="mute">Mute</string>
+  <string name="unmute">UnMute</string>
 </resources>

@@ -304,7 +304,7 @@ public class Prefs {
                 }
             }
         }
-        sharedPreferences.edit().remove(key).apply();
+        sharedPreferences.edit().remove(key);
     }
 
     /**

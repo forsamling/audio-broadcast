@@ -54,4 +54,13 @@ public class AppSettings {
     }
     return  version;
   }
+
+  public Boolean isMute(){
+    return Prefs.with(mContext).readBoolean("pref_mute");
+  }
+
+  public void setMute(boolean bMode) {
+    Prefs.with(mContext).writeBoolean("pref_mute", bMode);
+  }
+
 }

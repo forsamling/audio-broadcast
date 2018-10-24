@@ -2,12 +2,9 @@ package no.forsamling.audiobroadcast.controller;
 
 import android.media.AudioFormat;
 import android.media.AudioTrack;
-import android.os.Handler;
-import android.os.Looper;
 
-import no.forsamling.audiobroadcast.BaseApplication;
 import no.forsamling.audiobroadcast.Global;
-import no.forsamling.audiobroadcast.MainActivity;
+
 import no.forsamling.audiobroadcast.utils.BufferDecoder;
 import no.forsamling.audiobroadcast.utils.Logger;
 
