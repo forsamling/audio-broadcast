@@ -14,6 +14,7 @@ import no.forsamling.audiobroadcast.controller.Server;
 import no.forsamling.audiobroadcast.services.UPnPAudioService;
 
 import org.teleal.cling.model.meta.Icon;
+import org.teleal.cling.model.meta.Service;
 import org.teleal.cling.model.types.UDN;
 
 import java.net.Inet4Address;
@@ -33,6 +34,7 @@ import java.util.Locale;
 //http://4thline.org/projects/cling/core/manual/cling-core-manual.xhtml
 public class Global {
 
+  public static Service CONNECTED_SERVICE = null;
   public static Server _server;
   public static Playback _playback;
   public static final int DEFAULT_PORT = 4000;

@@ -268,11 +268,39 @@ public class UPnPAudioService extends AndroidUpnpServiceImpl {
     });
   }
 
-  protected void connectToServer(Service service, final String serverAddress) {
+  public void notifyDeviceNameChange(String originName, String newName) {
+    Logger.print("notifyDeviceNameChange");
+    if(Global.CONNECTED_SERVICE == null) return;
+    ActionInvocation setTargetInvocation = new ActionInvocation(Global.CONNECTED_SERVICE.getAction("NotifyDeviceNameChange"));
+    setTargetInvocation.setInput("OriginName", originName);
+    setTargetInvocation.setInput("NewName", newName);
+    this._Binder.getControlPoint().execute(new ActionCallback(setTargetInvocation) {
+      public void success(ActionInvocation invocation) {
+        boolean success;
+
+        String response = (String) invocation.getOutput("Response").getValue();
+        if (response.charAt(0) == '0') {
+          success = true;
+        } else {
+          success = false;
+        }
+
+        Logger.print(response);
+      }
+
+      public void failure(ActionInvocation invocation, UpnpResponse operation, String defaultMsg) {
+        if (defaultMsg != null)
+          Logger.print(defaultMsg);
+      }
+    });
+  }
+
+  protected void connectToServer(final Service service, final String serverAddress) {
     ActionInvocation setTargetInvocation = new ActionInvocation(service.getAction("UserConnect"));
     setTargetInvocation.setInput("Username", AppSettings.with(this).getDeviceName());
     setTargetInvocation.setInput("Version", "1.0");
     this._Binder.getControlPoint().execute(new ActionCallback(setTargetInvocation) {
+
       public void success(ActionInvocation invocation) {
         boolean success;
 
@@ -289,6 +317,9 @@ public class UPnPAudioService extends AndroidUpnpServiceImpl {
           String[] split = serverAddress.split(":");
           Global.CONNECTED_TO_ADDRESS = split[0];
           Global.CONNECTED_TO_PORT = Integer.valueOf(split[1]).intValue();
+          Global.CONNECTED_SERVICE = service;
+
+          Logger.print("connectToServer");
           client = new Client(Global.CONNECTED_TO_ADDRESS, Global.CONNECTED_TO_PORT);
           client.run();
           return;
@@ -337,7 +368,7 @@ public class UPnPAudioService extends AndroidUpnpServiceImpl {
           Logger.print("Stop Listening");
           Global.CONNECTED_TO_ADDRESS = "";
           Global.CONNECTED_TO_PORT = 0;
-
+          Global.CONNECTED_SERVICE = null;
           Global.audioService.eventsListener.onServerDisConnected(AppSettings.with(BaseApplication.getContext()).getDeviceName());
         }
 

@@ -249,6 +249,8 @@ public class MainActivity extends AppCompatActivity implements ServerDevicesAdap
           Global.audioService.updateNotificationsWithListenersCount();
         } else {
           Global.audioService.stopServer();
+          clientDevicesAdapter.clear();
+          clientDevicesAdapter.notifyDataSetChanged();
           btnMuteUnMute.setVisibility(View.GONE);
           AppSettings.with(BaseApplication.getContext()).setMute(false);
 
@@ -448,17 +450,21 @@ public class MainActivity extends AppCompatActivity implements ServerDevicesAdap
 
     @Override
     public void onServerConnected(final String userName) {
-      MainActivity.this.clientDevicesAdapter.add(userName);
-
+      Logger.print("onServerConnected");
       runOnUiThread(new Runnable() {
 
         @Override
         public void run() {
+          if(MainActivity.this.clientDevicesAdapter.getPosition(userName)<0)
+            MainActivity.this.clientDevicesAdapter.add(userName);
+
           MainActivity.this.clientDevicesAdapter.notifyDataSetChanged();
           txtDevicesNotFound.setVisibility(View.GONE);
         }
       });
     }
+
+
 
     @Override
     public void onServerDisConnected(final String userName) {
@@ -521,6 +527,21 @@ public class MainActivity extends AppCompatActivity implements ServerDevicesAdap
       swipeRefreshLayout.setEnabled(true);
 
       layoutServerSettings.setVisibility(View.GONE);
+    }
+  }
+
+  public void notifyDeviceNameChange(final String originName, final String newName) {
+    if(MainActivity.this.clientDevicesAdapter.getPosition(originName)>=0) {
+      Logger.print("OriginName:" + originName);
+      Logger.print("newName:" + newName);
+
+      runOnUiThread(new Runnable() {
+        @Override
+        public void run() {
+          MainActivity.this.clientDevicesAdapter.remove(originName);
+          MainActivity.this.clientDevicesAdapter.add(newName);
+        }
+      });
     }
   }
 

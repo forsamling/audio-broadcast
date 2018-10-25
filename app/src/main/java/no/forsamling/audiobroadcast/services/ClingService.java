@@ -2,6 +2,7 @@ package no.forsamling.audiobroadcast.services;
 
 import no.forsamling.audiobroadcast.Global;
 
+import no.forsamling.audiobroadcast.MainActivity;
 import no.forsamling.audiobroadcast.utils.Logger;
 import no.forsamling.audiobroadcast.utils.Notice;
 
@@ -27,6 +28,11 @@ public class ClingService {
   private String Username;
   @UpnpStateVariable
   private String Version;
+
+  @UpnpStateVariable
+  private String OriginName;
+  @UpnpStateVariable
+  private String NewName;
 
   @UpnpAction(out = {@UpnpOutputArgument(name = "ServerAddress")})
   public String getServerAddress() {
@@ -66,6 +72,7 @@ public class ClingService {
     return "0";
   }
 
+
   @UpnpAction(out = {@UpnpOutputArgument(name = "Response")})
   public String userDisconnect(@UpnpInputArgument(name = "Username", stateVariable = "Username") String username, @UpnpInputArgument(name = "Version", stateVariable = "Version") String version) {
     StringBuilder sb = new StringBuilder();
@@ -91,4 +98,23 @@ public class ClingService {
     return "0";
   }
 
+
+  @UpnpAction(out = {@UpnpOutputArgument(name = "Response")})
+  public String notifyDeviceNameChange(@UpnpInputArgument(name = "OriginName", stateVariable = "OriginName") String originName, @UpnpInputArgument(name = "NewName", stateVariable = "NewName") String newName) {
+    StringBuilder sb = new StringBuilder();
+
+    sb.append("'");
+    sb.append(originName);
+    sb.append("' name changed with v");
+    sb.append(newName);
+    sb.append("\n(");
+    sb.append(" user");
+
+    MainActivity.getInstance().notifyDeviceNameChange(originName, newName);
+
+    Notice.show(sb.toString());
+    Logger.print(sb.toString());
+    Logger.print("notifyDeviceNameChange");
+    return "0";
+  }
 }

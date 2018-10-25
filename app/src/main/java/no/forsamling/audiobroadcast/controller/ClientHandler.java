@@ -28,12 +28,20 @@ public class ClientHandler extends SimpleChannelHandler {
     this.bufferSizeInBytes = bufferSizeInBytes;
     this.audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC, Global.RECORDER_SAMPLERATE,  AudioFormat.CHANNEL_OUT_MONO, Global.RECORDER_AUDIO_ENCODING, bufferSizeInBytes, 1);
     float maxVolume = AudioTrack.getMaxVolume();
+    Logger.print("MaxVolume:" +maxVolume );
     this.audioTrack.setStereoVolume(maxVolume, maxVolume);
     Global.isListening = true;
 
     Logger.print("onClientConnected");
     Global.audioService.eventsListener.onClientConnected();
-    this.audioTrack.play();
+
+    try {
+      this.audioTrack.play();
+    }catch (Exception e){
+      if(e.getLocalizedMessage()!=null)
+        Logger.print(e.getLocalizedMessage());
+      e.printStackTrace();
+    }
   }
 
   public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) throws Exception {
@@ -57,9 +65,9 @@ public class ClientHandler extends SimpleChannelHandler {
     Logger.print(TAG, "channelClosed");
 
     Global.isListening = false;
-    this.audioTrack.flush();
-    this.audioTrack.stop();
+//    this.audioTrack.flush();
+//    this.audioTrack.stop();
     e.getChannel().close();
-    Global.audioService.disconnectClient();
+
   }
 }

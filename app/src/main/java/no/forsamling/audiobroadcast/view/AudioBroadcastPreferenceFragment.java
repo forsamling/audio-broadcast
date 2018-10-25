@@ -75,7 +75,10 @@ public class AudioBroadcastPreferenceFragment extends PreferenceFragment {
               return;
             }
 
-            AppSettings.with(BaseApplication.getContext()).setDeviceName(newName);
+            if(!AppSettings.with(BaseApplication.getContext()).getDeviceName().equals(newName)) {
+              Global.audioService.notifyDeviceNameChange(AppSettings.with(BaseApplication.getContext()).getDeviceName(), newName);
+              AppSettings.with(BaseApplication.getContext()).setDeviceName(newName);
+            }
             dialog.dismiss();
           }
         });
