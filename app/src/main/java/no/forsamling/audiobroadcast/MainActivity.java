@@ -29,6 +29,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import no.forsamling.audiobroadcast.R;
 import no.forsamling.audiobroadcast.interfaces.AudioBroadCastEventsListener;
 import no.forsamling.audiobroadcast.model.ClingDevice;
 import no.forsamling.audiobroadcast.services.UPnPAudioService;
@@ -492,7 +493,6 @@ public class MainActivity extends AppCompatActivity implements ServerDevicesAdap
     if (AppSettings.with(BaseApplication.getContext()).isBroadCastMode()) {
 
       Global.audioService.stopServer();
-//      Global.audioService.runServer();
       AppSettings.with(BaseApplication.getContext()).setMute(false);
 
       listRemoteDevices.setAdapter(clientDevicesAdapter);

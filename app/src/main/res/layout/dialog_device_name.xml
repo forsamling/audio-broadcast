@@ -8,6 +8,7 @@
     android:id="@+id/txtDeviceName"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_alignParentStart="true"
     android:layout_alignParentLeft="true"
     android:background="@color/colorLightGray"
     android:textColor="@color/colorBlack"
