@@ -17,7 +17,7 @@
   <string name="pref_app_mode_summary">Choose between Listen and BroadCast mode</string>
   <string name="btn_save">Save</string>
   <string name="btn_cancel">Cancel</string>
-  <string name="not_devices_found">No devices found</string>
+  <string name="devices_not_found">No devices found</string>
   <string name="crash_toast_text">Audio Broadcast crashed, please send the e-mail to the developer.</string>
   <string name="start">Start</string>
   <string name="stop">Stop</string>

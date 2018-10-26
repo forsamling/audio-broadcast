@@ -25,7 +25,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
 
-        android:text="@string/not_devices_found"
+        android:text="@string/devices_not_found"
         android:textColor="@color/colorAccent"
         android:textSize="25dp" />
 
@@ -64,7 +64,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="ToggleButton"
         android:textOff="@string/start"
         android:textOn="@string/stop" />
 
