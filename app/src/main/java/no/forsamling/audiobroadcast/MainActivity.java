@@ -245,7 +245,7 @@ public class MainActivity extends AppCompatActivity implements ServerDevicesAdap
         if(isChecked) {
           Global.audioService.runServer();
           btnMuteUnMute.setVisibility(View.VISIBLE);
-
+          btnMuteUnMute.setChecked(false);
           Global.audioService.updateNotificationsWithListenersCount();
         } else {
           Global.audioService.stopServer();
