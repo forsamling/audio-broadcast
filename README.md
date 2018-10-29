@@ -11,6 +11,12 @@ Audio Broadcast supports multiple translators at the same time, for multiple lan
 The translator uses Audio Broadcast to stream his own voice.
 The attendees uses Audio Broadcast to pick a language and listen in.
 
+# TESTING
+
+You can opt in on testing the [beta release for Android](https://play.google.com/apps/testing/no.forsamling.audiobroadcast)
+
+Please report any issues or wishes here on the Github project.
+
 # Libraries in use:
 - [ACRA](https://github.com/ACRA/acra)
 - [Asynchronous Http Client](https://github.com/loopj/android-async-http)
